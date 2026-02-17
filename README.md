@@ -93,6 +93,10 @@ cd worker && npm test
 cd worker && npx wrangler deploy
 ```
 
+## Roadmap
+
+- **Directory uploads** -- `share ./dist` bundles all files (HTML, images, CSS, JS) and uploads them under a shared prefix. Relative links between pages and assets work as-is. Served as `/{prefix}/{path}` with `index.html` as the default.
+
 ## License
 
 MIT

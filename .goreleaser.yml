@@ -51,6 +51,7 @@ brews:
   - repository:
       owner: techops-services
       name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     directory: Formula
     homepage: "https://github.com/techops-services/share"
     description: "Upload HTML and get a short URL"

@@ -1,0 +1,25 @@
+name = "share-worker"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[triggers]
+crons = ["0 * * * *"]
+
+[[r2_buckets]]
+binding = "PAGES"
+bucket_name = "share-pages"
+
+[[kv_namespaces]]
+binding = "META"
+preview_id = "preview-share-meta"
+id = "prod-share-meta-id"
+
+[vars]
+BASE_URL = "https://sh.techops.services"
+MAX_UPLOAD_SIZE = "5242880"
+DEFAULT_TTL = "86400"
+MAX_TTL_ANONYMOUS = "86400"
+MAX_TTL_AUTHENTICATED = "2592000"
+MIN_TTL = "300"
+ANON_RATE_LIMIT = "10"
+AUTH_RATE_LIMIT = "100"

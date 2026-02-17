@@ -32,7 +32,7 @@ func TestUpload(t *testing.T) {
 		w.Header().Set("X-RateLimit-Remaining", "9")
 		w.Header().Set("X-RateLimit-Reset", "1708300800")
 		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte(`{"id":"abc123","url":"https://sh.techops.services/abc123","expires_at":"2024-02-20T00:00:00Z","size":13,"ttl":3600}`))
+		w.Write([]byte(`{"id":"abc123","url":"https://share.techops.services/abc123","expires_at":"2024-02-20T00:00:00Z","size":13,"ttl":3600}`))
 	}))
 	defer server.Close()
 
@@ -48,8 +48,8 @@ func TestUpload(t *testing.T) {
 	if resp.ID != "abc123" {
 		t.Errorf("expected ID abc123, got %s", resp.ID)
 	}
-	if resp.URL != "https://sh.techops.services/abc123" {
-		t.Errorf("expected URL https://sh.techops.services/abc123, got %s", resp.URL)
+	if resp.URL != "https://share.techops.services/abc123" {
+		t.Errorf("expected URL https://share.techops.services/abc123, got %s", resp.URL)
 	}
 	if resp.Size != 13 {
 		t.Errorf("expected Size 13, got %d", resp.Size)
@@ -72,7 +72,7 @@ func TestUploadWithAPIKey(t *testing.T) {
 			t.Errorf("expected X-Api-Key sk_test_123, got %s", key)
 		}
 		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte(`{"id":"xyz","url":"https://sh.techops.services/xyz","expires_at":"2024-02-20T00:00:00Z","size":5,"ttl":86400}`))
+		w.Write([]byte(`{"id":"xyz","url":"https://share.techops.services/xyz","expires_at":"2024-02-20T00:00:00Z","size":5,"ttl":86400}`))
 	}))
 	defer server.Close()
 
@@ -165,7 +165,7 @@ func TestList(t *testing.T) {
 		}
 
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"shares":[{"id":"abc","url":"https://sh.techops.services/abc","created_at":"2024-02-19T12:00:00Z","expires_at":"2024-02-20T12:00:00Z","size":100,"views":5}],"total":1}`))
+		w.Write([]byte(`{"shares":[{"id":"abc","url":"https://share.techops.services/abc","created_at":"2024-02-19T12:00:00Z","expires_at":"2024-02-20T12:00:00Z","size":100,"views":5}],"total":1}`))
 	}))
 	defer server.Close()
 

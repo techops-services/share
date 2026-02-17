@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	defaultEndpoint = "https://sh.techops.services"
+	defaultEndpoint = "https://share.techops.services"
 	defaultTTL      = "24h"
 	defaultListSize = 50
 )

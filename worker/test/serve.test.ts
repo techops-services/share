@@ -7,7 +7,7 @@ import { describe, it, expect } from "vitest";
 import worker from "../src/index";
 import type { Env } from "../src/types";
 
-const BASE_URL = "https://sh.techops.services";
+const BASE_URL = "https://share.techops.services";
 
 function makeRequest(
   path: string,

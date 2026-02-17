@@ -68,7 +68,7 @@ wrangler kv key put --namespace-id=<your-kv-id> \
 In the Cloudflare dashboard:
 
 1. Go to Workers & Pages > share-worker > Settings > Domains & Routes
-2. Add custom domain: `sh.techops.services`
+2. Add custom domain: `share.techops.services`
 3. Cloudflare will auto-provision the SSL certificate
 
 ## 7. Local Development
@@ -109,10 +109,10 @@ pnpm deploy
 
 ```bash
 # Health check
-curl https://sh.techops.services/api/health
+curl https://share.techops.services/api/health
 
 # Upload
-curl -X POST https://sh.techops.services/api/upload \
+curl -X POST https://share.techops.services/api/upload \
   -H "Content-Type: text/html" \
   -d "<h1>Live Test</h1>"
 ```
@@ -123,7 +123,7 @@ All environment variables are configured in `wrangler.toml` under `[vars]`. No s
 
 | Variable | Default | Description |
 |---|---|---|
-| BASE_URL | https://sh.techops.services | Public base URL |
+| BASE_URL | https://share.techops.services | Public base URL |
 | MAX_UPLOAD_SIZE | 5242880 | Max upload size in bytes (5MB) |
 | DEFAULT_TTL | 86400 | Default TTL in seconds (24h) |
 | MAX_TTL_ANONYMOUS | 86400 | Max TTL for anonymous uploads (24h) |

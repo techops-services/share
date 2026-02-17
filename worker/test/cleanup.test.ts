@@ -8,7 +8,7 @@ import { handleCleanup } from "../src/cleanup";
 import worker from "../src/index";
 import type { Env, ShareMetadata } from "../src/types";
 
-const BASE_URL = "https://sh.techops.services";
+const BASE_URL = "https://share.techops.services";
 const typedEnv = env as unknown as Env;
 
 function makeRequest(

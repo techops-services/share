@@ -35,11 +35,11 @@ func runInit(f *flags) error {
 	fmt.Println()
 
 	// Endpoint.
-	fmt.Printf("API endpoint [https://sh.techops.services]: ")
+	fmt.Printf("API endpoint [https://share.techops.services]: ")
 	endpoint, _ := reader.ReadString('\n')
 	endpoint = strings.TrimSpace(endpoint)
 	if endpoint == "" {
-		endpoint = "https://sh.techops.services"
+		endpoint = "https://share.techops.services"
 	}
 
 	// API key.

@@ -12,10 +12,10 @@ bucket_name = "share-pages"
 [[kv_namespaces]]
 binding = "META"
 preview_id = "preview-share-meta"
-id = "prod-share-meta-id"
+id = "980ee603275241c1aa3e0f69e3d8d0ee"
 
 [vars]
-BASE_URL = "https://sh.techops.services"
+BASE_URL = "https://share.techops.services"
 MAX_UPLOAD_SIZE = "5242880"
 DEFAULT_TTL = "86400"
 MAX_TTL_ANONYMOUS = "86400"

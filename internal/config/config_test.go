@@ -46,7 +46,7 @@ func TestLoadMissingFile(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
-	if cfg.Endpoint != "https://sh.techops.services" {
+	if cfg.Endpoint != "https://share.techops.services" {
 		t.Errorf("expected default endpoint, got %s", cfg.Endpoint)
 	}
 	if cfg.DefaultTTL != "24h" {

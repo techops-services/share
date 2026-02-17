@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	defaultEndpoint = "https://sh.techops.services"
+	defaultEndpoint = "https://share.techops.services"
 	defaultTimeout  = 30 * time.Second
 	maxBodySize     = 5 * 1024 * 1024 // 5MB
 )

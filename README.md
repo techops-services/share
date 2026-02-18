@@ -14,11 +14,8 @@ Output is a single URL, ready to pipe or paste: `https://share.techops.services/
 ## Install
 
 ```bash
-# Homebrew
-brew install techops-services/tap/share
-
-# Go
-go install github.com/techops-services/share/cmd/share@latest
+curl -fsSL https://raw.githubusercontent.com/techops-services/share/main/install.sh | bash
+share init
 ```
 
 Then run `share init` to set up your config at `~/.config/share/config.toml`.
@@ -51,25 +48,14 @@ Anonymous uploads expire in 24h max. Authenticated uploads (with `--api-key`) ca
 
 The share tool includes a Claude Code plugin with a `/share` slash command and auto-detection skill.
 
-### Install the plugin
-
-```bash
-bash plugin/install.sh
+```
+/plugin marketplace add techops-services/claude-plugins
+/plugin install share@techops-plugins
 ```
 
-This installs:
-- `/share` command -- share HTML files directly from Claude Code
-- Auto-share skill -- Claude offers to share HTML pages it creates during conversations
+Then `/share` in any conversation. The CLI binary auto-installs on first use.
 
-### Usage in Claude Code
-
-```
-/share                    # share the most recently created .html file
-/share page.html          # share a specific file
-/share --clipboard        # share HTML from clipboard
-```
-
-Claude will also detect when it writes a complete HTML page and offer to share it automatically.
+![Claude Code share plugin demo](assets/demo.png)
 
 ## Architecture
 

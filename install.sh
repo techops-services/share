@@ -43,16 +43,36 @@ mv "$TMP/share" "$INSTALL_DIR/share"
 
 echo "Installed share to ${INSTALL_DIR}/share"
 
-# Warn if the install dir isn't in PATH
+# Add install dir to PATH if needed
 case ":$PATH:" in
   *":${INSTALL_DIR}:"*) ;;
   *)
-    echo ""
-    echo "NOTE: ${INSTALL_DIR} is not in your PATH."
-    echo "Add it by running:"
-    echo ""
-    echo "  echo 'export PATH=\"${INSTALL_DIR}:\$PATH\"' >> ~/.zshrc && source ~/.zshrc"
-    echo ""
+    SHELL_NAME=$(basename "${SHELL:-/bin/bash}")
+    case "$SHELL_NAME" in
+      zsh)  RC_FILE="$HOME/.zshrc" ;;
+      bash)
+        if [ -f "$HOME/.bashrc" ]; then
+          RC_FILE="$HOME/.bashrc"
+        else
+          RC_FILE="$HOME/.bash_profile"
+        fi
+        ;;
+      fish) RC_FILE="$HOME/.config/fish/config.fish" ;;
+      *)    RC_FILE="$HOME/.profile" ;;
+    esac
+
+    EXPORT_LINE="export PATH=\"${INSTALL_DIR}:\$PATH\""
+    if [ "$SHELL_NAME" = "fish" ]; then
+      EXPORT_LINE="fish_add_path ${INSTALL_DIR}"
+    fi
+
+    if ! grep -qF "$INSTALL_DIR" "$RC_FILE" 2>/dev/null; then
+      echo "" >> "$RC_FILE"
+      echo "$EXPORT_LINE" >> "$RC_FILE"
+      echo "Added ${INSTALL_DIR} to PATH in ${RC_FILE}"
+    fi
+
+    export PATH="${INSTALL_DIR}:$PATH"
     ;;
 esac
 

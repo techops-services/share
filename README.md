@@ -2,6 +2,24 @@
 
 Upload HTML and get a short URL. Pages are hosted on Cloudflare Workers and expire automatically.
 
+## Claude Code Plugin
+
+```
+/plugin marketplace add techops-services/claude-plugins
+/plugin install share@techops-plugins
+```
+
+Then `/share` in any conversation. The CLI binary auto-installs on first use.
+
+![Claude Code share plugin demo](assets/demo.png)
+
+## CLI
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/techops-services/share/main/install.sh | bash
+share init
+```
+
 ```
 share page.html                  # upload a file
 echo "<h1>hi</h1>" | share      # pipe from stdin
@@ -10,15 +28,6 @@ share ./dist                     # upload index.html from a directory
 ```
 
 Output is a single URL, ready to pipe or paste: `https://share.techops.services/V1StGXR8`
-
-## Install
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/techops-services/share/main/install.sh | bash
-share init
-```
-
-Then run `share init` to set up your config at `~/.config/share/config.toml`.
 
 ## Commands
 
@@ -43,19 +52,6 @@ Then run `share init` to set up your config at `~/.config/share/config.toml`.
 ```
 
 Anonymous uploads expire in 24h max. Authenticated uploads (with `--api-key`) can last up to 30 days.
-
-## Claude Code Plugin
-
-The share tool includes a Claude Code plugin with a `/share` slash command and auto-detection skill.
-
-```
-/plugin marketplace add techops-services/claude-plugins
-/plugin install share@techops-plugins
-```
-
-Then `/share` in any conversation. The CLI binary auto-installs on first use.
-
-![Claude Code share plugin demo](assets/demo.png)
 
 ## Architecture
 
